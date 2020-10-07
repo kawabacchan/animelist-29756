@@ -18,6 +18,10 @@
   box-sizing: border-box;
 }
 
+p {
+  margin: 0;
+}
+
 header {
   background-color: pink;
   height: 150px;
