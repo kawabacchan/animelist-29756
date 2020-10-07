@@ -1,0 +1,28 @@
+.wrapper {
+  display: flex;
+  padding: 20px;
+}
+
+.left-part {
+  width: 200px;
+  background-color: lightblue;
+  height: 100%;
+  /* display: none; */
+}
+
+.right-part {
+  width: 100%;
+  text-align: center;
+}
+
+.my-page-title {
+  font-size: 24px;
+}
+
+.my-list {
+  margin-top: 20px; 
+}
+
+.list-name {
+  font-size: 20px;
+}
