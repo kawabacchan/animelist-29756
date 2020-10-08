@@ -8,7 +8,7 @@
     <p>フォロー</p>
     <p>友達検索</p>
     <p>ランキング</p>
-    <p>ログアウト</p>
+    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
   </div>
   <div class="right-part">
     <div class="my-page-title">○○さんのマイページ</div>
