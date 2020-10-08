@@ -26,3 +26,40 @@
 .list-name {
   font-size: 20px;
 }
+
+.anime-lists {
+  background-color: lightgoldenrodyellow;
+  margin: 0 auto;
+}
+
+.anime-form {
+  background-color: lightpink;
+  width: 800px;
+  height: 600px;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+
+.anime-form p {
+  font-size: 30px;
+}
+
+.anime-form-name {
+  width: 500px;
+}
+
+.anime-form-genre {
+  width: 150px;
+}
+
+.anime-form-score {
+  width: 150px;
+}
+
+.image-form {
+  margin-top: 10px;
+}
+
+.hidden {
+  display: none;
+}
