@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'animes/index'
   root to: "animes#index"
 
-  resources :lists, only: [:new, :create]
+  resources :lists, only: [:new, :create] do
+    resources :animes, only: [:index, :new, :create]
+  end
+
 end

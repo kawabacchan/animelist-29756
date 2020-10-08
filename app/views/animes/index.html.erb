@@ -14,34 +14,20 @@
   <div class="right-part">
     <div class="my-page-title">○○さんのマイページ</div>
     <div class="my-lists">
-      <div class="my-list">
-        <div class="list-name">マイベスト</div>
-        <div class="list-animes">
-          <div class="list-anime">
-            ジョジョの奇妙な冒険
-            戦闘系
-            100点
-            面白い
-          </div>
-          <div class="list-anime">
-            ワンピース
-            戦闘系
-            100点
-            面白い
+      <% @lists.each do |list| %>
+        <div class="my-list">
+          <div class="list-name"><%= list.name %><%= link_to '+', new_list_anime_path(list.id) %></div>
+
+          <div class="list-animes">
+            <div class="list-anime">
+              ジョジョの奇妙な冒険
+              戦闘系
+              100点
+              面白い
+            </div>
           </div>
         </div>
-      </div>
-      <div class="my-list">
-        <div class="list-name">見たいアニメリスト</div>
-        <div class="list-animes">
-          <div class="list-anime">
-            鬼滅の刃
-            -系
-            -点
-            友人から紹介された
-          </div>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
