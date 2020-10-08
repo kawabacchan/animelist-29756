@@ -2,13 +2,13 @@
 
 ## users テーブル
 
-| Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| nickname | string | null: false |
-| email    | string | null: false |
-| password | string | null: false |
-| birthday | date   | null: false |
-| sex      | id     | null: false |
+| Column   | Type    | Options     |
+| -------- | ------- | ----------- |
+| nickname | string  | null: false |
+| email    | string  | null: false |
+| password | string  | null: false |
+| birthday | date    | null: false |
+| sex_id   | integer | null: false |
 
 ### association
 has_many :lists
@@ -17,11 +17,11 @@ has_many :follows
 
 ## lists テーブル
 
-| Column   | Type       | Options                        |
-| -------- | ---------- | ------------------------------ |
-| name     | string     | null: false                    |
-| public   | boolean    | null: false                    |
-| user     | references | null: false, foreign_key: true |
+| Column    | Type       | Options                        |
+| --------- | ---------- | ------------------------------ |
+| name      | string     | null: false                    |
+| public_id | integer    | null: false                    |
+| user      | references | null: false, foreign_key: true |
 
 ### association
 belongs_to :user
