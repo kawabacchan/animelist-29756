@@ -42,13 +42,14 @@
   margin-bottom: 10%;
 }
 
-.log-in-sign-up {
-  text-align: center;
+.make-account {
+  width: 50%;
+  margin: 0 auto;
 }
 
 .registration-btn {
   background-color: lightpink;
-  width: 200px;
+  width: 100%;
   height: 60px;
   border-radius: 10px;
   color: white;
