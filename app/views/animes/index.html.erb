@@ -15,18 +15,28 @@
     <div class="my-page-title">○○さんのマイページ</div>
     <div class="my-lists">
       <% @lists.each do |list| %>
-        <div class="my-list">
-          <div class="list-name"><%= list.name %><%= link_to '+', new_list_anime_path(list.id) %></div>
-
-          <div class="list-animes">
-            <div class="list-anime">
-              ジョジョの奇妙な冒険
-              戦闘系
-              100点
-              面白い
+        <table class="anime-lists">
+          <tr>
+            <th colspan="4"><%= list.name %></th>
+            <%= link_to '+', new_list_anime_path(list.id) %>
+          </tr>
+          <tr>
+            <th>タイトル名(必須)</th>
+            <th>ジャンル(任意)</th>
+            <th>評価点(任意)</th>
+            <th>メモ(任意)</th>
+          </tr>
+          <% Anime.where(list_id: list.id).each do |anime| %>
+            <div class="anime-list">
+              <tr>
+                <td><%= anime.name %></td>
+                <td><%= anime.genre.name %></td>
+                <td><%= anime.score %></td>
+                <td><%= anime.memo %></td>
+              </tr>
             </div>
-          </div>
-        </div>
+          <% end %>
+        </table>
       <% end %>
     </div>
   </div>

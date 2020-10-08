@@ -12,58 +12,18 @@
     <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
   </div>
   <div class="right-part">
-    <div class="my-page-title">○○さんのマイページ</div>
-    <div class="my-lists">
+    <div class="my-page-title">アニメ入力</div>
+    <div class="anime-form">
       <% @lists.each do |list| %>
-        <div class="my-list">
-          <%= form_with model: [@list,@anime], url: list_animes_path(list.id), local: true do |f| %>
-            <%= render "shared/error_messages", model: f.object %>
-            <table class="anime-lists">
-              <tr>
-                <th colspan="4"><%= list.name %></th>
-              </tr>
-              <tr>
-                <th>タイトル名(必須)</th>
-                <th>ジャンル(任意)</th>
-                <th>評価点(任意)</th>
-                <th>メモ(任意)</th>
-              </tr>
-              <% if list.id == @list.id %>
-                <div class="anime-form">
-                  <tr>
-                    <% f.number_field :list_id, value: list.id %>
-                    <td><%= f.text_field :name %></td>
-                    <td><%= f.collection_select(:genre_id, Genre.all, :id, :name, {}) %></td>
-                    <td><%= f.number_field :score %></td>
-                    <td><%= f.text_field :memo %></td>
-                    <td><%= f.submit '保存' %></td>
-                  </tr>
-                </div>
-                <% Anime.where(list_id: list.id).each do |anime| %>
-                  <div class="anime-list">
-                    <tr>
-                      <td><%= anime.name %></td>
-                      <td><%= anime.genre.name %></td>
-                      <td><%= anime.score %></td>
-                      <td><%= anime.memo %></td>
-                    </tr>
-                  </div>
-                <% end %>
-              <% else %>
-                <% Anime.where(list_id: list.id).each do |anime| %>
-                  <div class="anime-list">
-                    <tr>
-                      <td><%= anime.name %></td>
-                      <td><%= anime.genre.name %></td>
-                      <td><%= anime.score %></td>
-                      <td><%= anime.memo %></td>
-                    </tr>
-                  </div>
-                <% end %>
-              <% end %>
-            </table>
-          <% end %>
-        </div>
+        <%= form_with model: [@list,@anime], url: list_animes_path(list.id), local: true do |f| %>
+          <%= render "shared/error_messages", model: f.object %>
+          <% f.number_field :list_id, value: list.id %>
+          <div><%= f.label :name, 'タイトル' %><br><%= f.text_field :name, class:"anime-form-name" %></div>
+          <div><%= f.label :genre, 'ジャンル' %><br><%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, class:"anime-form-genre") %></div>
+          <div><%= f.label :score, '評価点' %><br><%= f.number_field :score, class:"anime-form-stock" %></div>
+          <div><%= f.label :memo, 'メモ' %><br><%= f.text_area :memo, size:"50x10", class:"anime-form-memo" %></div>
+          <div><%= f.submit '保存', class:"anime-form-submit" %></div>
+        <% end %>
       <% end %>
     </div>
   </div>

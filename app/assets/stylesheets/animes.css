@@ -31,3 +31,15 @@
   background-color: lightgoldenrodyellow;
   margin: 0 auto;
 }
+
+.anime-form-name {
+  width: 500px;
+}
+
+.anime-form-genre {
+  width: 150px;
+}
+
+.anime-form-score {
+  width: 150px;
+}
