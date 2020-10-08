@@ -11,6 +11,17 @@
     <p>ランキング</p>
     <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
   </div>
+
+  <div class="list-create">
+    <%= form_with model: @list, local: true do |f| %>
+      <%= render "shared/error_messages", model: f.object %>
+      <p>リスト名</p><%= f.text_field :name %>
+      <p>公開 or 非公開</p><%= f.collection_select(:public_id, Public.all, :id, :name, {} ) %>
+      <%= f.submit '作成' %>
+    <% end %>
+  </div>
+
+
   <div class="right-part">
     <div class="my-page-title">○○さんのマイページ</div>
     <div class="my-lists">
