@@ -33,7 +33,7 @@ has_many :animes
 | Column   | Type       | Options                        |
 | -------- | ---------- | ------------------------------ |
 | name     | string     | null: false                    |
-| genre    | string     | null: false                    |
+| genre_id | integer    | null: false                    |
 | score    | integer    | null: false                    |
 | memo     | text       | null: false                    |
 | list     | references | null: false, foreign_key: true |
