@@ -2,6 +2,7 @@ class AnimesController < ApplicationController
   def index
     @lists = List.where(user_id: current_user.id)
     @user = User.find(current_user.id)
+    @follows = Follow.where(user_id: current_user.id)
   end
 
   def new

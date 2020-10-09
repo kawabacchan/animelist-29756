@@ -8,6 +8,11 @@
     <p>ID: <%= current_user.public_uid %></p>
     <%= link_to "リスト作成", new_list_path %>
     <p>フォロー</p>
+    <div>
+      <% @follows.each do |follow| %>
+        <%= link_to User.find(follow.friend_id).nickname, new_follow_path(user_id: @friend_user.id) %>
+      <% end%>
+    </div>
     <p>友達検索</p>
     <%= link_to @friend_user.nickname, new_follow_path(user_id: @friend_user.id) %>
     <p>ランキング</p>
