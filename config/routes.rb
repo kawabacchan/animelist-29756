@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   root to: "animes#index"
 
   resources :lists, only: [:new, :create] do
-    resources :animes, only: [:index, :new, :create]
+    resources :animes, only: [:index, :new, :create] do
+      collection {get :search}
+      collection {get :friend_index}
+    end
   end
 
 end

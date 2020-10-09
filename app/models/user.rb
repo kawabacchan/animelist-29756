@@ -13,4 +13,6 @@ class User < ApplicationRecord
   validates :birthday, presence: true
   validates :sex_id, presence: true, numericality: {other_than: 1}
 
+  generate_public_uid
+
 end

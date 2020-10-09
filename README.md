@@ -2,13 +2,14 @@
 
 ## users テーブル
 
-| Column   | Type    | Options     |
-| -------- | ------- | ----------- |
-| nickname | string  | null: false |
-| email    | string  | null: false |
-| password | string  | null: false |
-| birthday | date    | null: false |
-| sex_id   | integer | null: false |
+| Column     | Type    | Options     |
+| ---------- | ------- | ----------- |
+| nickname   | string  | null: false |
+| email      | string  | null: false |
+| password   | string  | null: false |
+| birthday   | date    | null: false |
+| sex_id     | integer | null: false |
+| public_uid | string  | null: false |
 
 ### association
 has_many :lists
