@@ -23,14 +23,14 @@ p {
 }
 
 header {
-  background-color: pink;
-  height: 150px;
+  background-color: #FF5192;
+  color: white;
+  height: 100px;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
 }
 
 .header-title {
-  background-color: red;
   text-align: center;
   font-weight: bold;
   font-size: 30px;
@@ -38,6 +38,15 @@ header {
 
 .header-menu {
   width: 100px;
+  border: 1px solid white;
+  padding: 3px 0;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.header-menu:hover {
+  opacity: 0.8;
+  cursor: pointer;
 }
 
 table {

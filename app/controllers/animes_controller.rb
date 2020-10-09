@@ -6,13 +6,11 @@ class AnimesController < ApplicationController
   end
 
   def new
-    @lists = List.where(user_id: current_user.id)
     @list = List.find(params[:list_id])
     @anime = Anime.new
   end
 
   def create
-    @lists = List.where(user_id: current_user.id)
     @list = List.find(params[:list_id])
     @anime = Anime.new(params_anime)
     if @anime.save
@@ -26,6 +24,7 @@ class AnimesController < ApplicationController
     @lists = List.where(user_id: current_user.id)
     @user = User.find(current_user.id)
     @friend_user = User.find_by(public_uid: params[:public_uid])
+    @follows = Follow.where(user_id: current_user.id)
   end
 
   private

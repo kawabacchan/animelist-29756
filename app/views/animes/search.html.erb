@@ -13,11 +13,19 @@
         <%= link_to User.find(follow.friend_id).nickname, new_follow_path(user_id: @friend_user.id) %>
       <% end%>
     </div>
-    <p>友達検索</p>
-    <%= link_to @friend_user.nickname, new_follow_path(user_id: @friend_user.id) %>
+    <%= form_with url:search_list_animes_path(list_id: 1), local: true, method: :get do |f| %>
+      <p>友達検索</p>
+      <%= f.text_field :public_uid %>
+      <%= f.submit "検索"%>
+    <% end %>
     <p>ランキング</p>
     <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
   </div>
+  <div class="second-left-part">
+    <p>友達検索の結果</p>
+    <%= link_to @friend_user.nickname, new_follow_path(user_id: @friend_user.id) %>
+  </div>
+
   <div class="right-part">
     <div class="my-page-title"><%= @user.nickname %>さんのマイページ</div>
     <div class="my-lists">

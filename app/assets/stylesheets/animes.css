@@ -1,13 +1,20 @@
 .wrapper {
   display: flex;
-  padding: 20px;
 }
 
 .left-part {
-  width: 200px;
-  background-color: lightblue;
-  height: 100%;
-  /* display: none; */
+  padding: 5px;
+  width: 300px;
+  border-right: 1px solid lightpink;
+  height: calc(100vh - 110px);
+  display: none;
+}
+
+.second-left-part {
+  padding: 5px;
+  width: 300px;
+  background-color: lightgreen;
+  height: calc(100vh - 110px);
 }
 
 .right-part {
@@ -17,6 +24,19 @@
 
 .my-page-title {
   font-size: 24px;
+  height: 40px;
+  border-bottom: 1px solid lightpink;
+}
+
+.right-part-without-title {
+  width: 100%;
+  text-align: center;
+  height: calc(100vh - 150px);
+  overflow: scroll;
+}
+
+.end-page-space {
+  height: 50px;
 }
 
 .my-list {
@@ -28,8 +48,23 @@
 }
 
 .anime-lists {
-  background-color: lightgoldenrodyellow;
+  background-color: #FFFAFA;
   margin: 0 auto;
+}
+
+.th-anime-name {
+  width: 200px;
+}
+
+.th-anime-genre{
+  width: 100px;
+}
+.th-anime-score{
+  width: 100px;
+}
+
+.th-anime-memo{
+  width: 400px;
 }
 
 .anime-form {

@@ -1,13 +1,20 @@
 <header>
   <div class="header-title">アニメリスト</div>
-  <div class="header-menu">メニュー</div>
+  <div class="header-menu" id="menu" >メニュー</div>
   
 </header>
 <div class="wrapper">
-  <div class="left-part">
-    <p>ID: <%= current_user.public_uid %></p>
+  <div class="left-part" id="left-part">
+    <p>ご自身のID: <%= current_user.public_uid %></p>
     <%= link_to "リスト作成", new_list_path %>
     <p>フォロー</p>
+    <% if @follows.present?%>
+      <div>
+        <% @follows.each do |follow| %>
+          <%= link_to User.find(follow.friend_id).nickname, new_follow_path(user_id: @friend_user.id) %>
+        <% end%>
+      </div>
+    <% end %>
     <div>
       <% @follows.each do |follow| %>
         <%= link_to User.find(follow.friend_id).nickname, new_follow_path(user_id: follow.friend_id) %>
@@ -15,7 +22,7 @@
     </div>
     <%= form_with url:search_list_animes_path(list_id: 1), local: true, method: :get do |f| %>
       <p>友達検索</p>
-      <%= f.text_field :public_uid %>
+      <%= f.text_field :public_uid, placeholder:"友達のIDを入力" %>
       <%= f.submit "検索"%>
     <% end %>
     <p>ランキング</p>
@@ -23,31 +30,35 @@
   </div>
   <div class="right-part">
     <div class="my-page-title"><%= @user.nickname %>さんのマイページ</div>
-    <div class="my-lists">
-      <% @lists.each do |list| %>
-        <table class="anime-lists">
-          <tr>
-            <th colspan="4"><%= list.name %></th>
-            <%= link_to '+', new_list_anime_path(list.id) %>
-          </tr>
-          <tr>
-            <th>タイトル名(必須)</th>
-            <th>ジャンル(任意)</th>
-            <th>評価点(任意)</th>
-            <th>メモ(任意)</th>
-          </tr>
-          <% Anime.where(list_id: list.id).each do |anime| %>
-            <div class="anime-list">
-              <tr>
-                <td><%= anime.name %></td>
-                <td><%= anime.genre.name %></td>
-                <td><%= anime.score %></td>
-                <td><%= anime.memo %></td>
-              </tr>
-            </div>
-          <% end %>
-        </table>
-      <% end %>
+    <div class="right-part-without-title">
+      <div class="my-lists">
+        <% @lists.each do |list| %>
+          <table class="anime-lists">
+            <tr>
+              <th colspan="4"><%= list.name %></th>
+              <%= link_to '+', new_list_anime_path(list.id) %>
+            </tr>
+            <tr>
+              <th class="th-anime-name">タイトル名</th>
+              <th class="th-anime-genre">ジャンル</th>
+              <th class="th-anime-score">評価点</th>
+              <th class="th-anime-memo">メモ</th>
+            </tr>
+            <% Anime.where(list_id: list.id).each do |anime| %>
+              <div class="anime-list">
+                <tr>
+                  <td><%= anime.name %></td>
+                  <td><%= anime.genre.name %></td>
+                  <td><%= anime.score %></td>
+                  <td><%= anime.memo %></td>
+                </tr>
+              </div>
+            <% end %>
+          </table>
+        <% end %>
+      </div>
+      <div class="end-page-space">
+      </div>
     </div>
   </div>
 </div>
