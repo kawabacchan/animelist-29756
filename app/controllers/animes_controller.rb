@@ -27,11 +27,6 @@ class AnimesController < ApplicationController
     @friend_user = User.find_by(public_uid: params[:public_uid])
   end
 
-  def friend_index
-    @friend_user = User.find(params[:user_id])
-    @friend_lists = List.where(user_id: params[:user_id]).where(public_id: 2)
-  end
-
   private
 
   def params_anime

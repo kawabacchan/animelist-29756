@@ -45,9 +45,10 @@ belongs_to :list
 
 ## follows
 
-| Column   | Type       | Options                        |
-| -------- | ---------- | ------------------------------ |
-| user     | references | null: false, foreign_key: true |
+| Column    | Type       | Options                        |
+| --------- | ---------- | ------------------------------ |
+| friend_id | integer    | null: false                    |
+| user      | references | null: false, foreign_key: true |
 
 ### association
 belongs_to :user

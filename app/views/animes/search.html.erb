@@ -9,7 +9,7 @@
     <%= link_to "リスト作成", new_list_path %>
     <p>フォロー</p>
     <p>友達検索</p>
-    <%= link_to @friend_user.nickname, friend_index_list_animes_path(list_id: 1, user_id: @friend_user.id) %>
+    <%= link_to @friend_user.nickname, new_follow_path(user_id: @friend_user.id) %>
     <p>ランキング</p>
     <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
   </div>
