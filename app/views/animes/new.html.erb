@@ -17,7 +17,7 @@
       <% @lists.each do |list| %>
         <%= form_with model: [@list,@anime], url: list_animes_path(list.id), local: true do |f| %>
           <%= render "shared/error_messages", model: f.object %>
-          <% f.number_field :list_id, value: list.id %>
+          <%= f.number_field :list_id, value: list.id, class:"hidden" %>
           <div><%= f.label :name, 'タイトル' %><br><%= f.text_field :name, class:"anime-form-name" %></div>
           <div><%= f.label :genre, 'ジャンル' %><br><%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, class:"anime-form-genre") %></div>
           <div><%= f.label :score, '評価点' %><br><%= f.number_field :score, class:"anime-form-stock" %></div>

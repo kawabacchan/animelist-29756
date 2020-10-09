@@ -1,12 +1,13 @@
 <div class="log-in-page">
   <div class="log-in-left">
-    <p>アニメ好きのあなたへ</p>
-    <ul>
-      <li>自己紹介の時</li>
-      <li>不意にアニメの話になった時</li>
-      <li>アニメに興味がある人がいた時</li>
-    </ul>
-    <p>おすすめのアニメを即答するための備忘録！！</p>
+    <div class="log-in-left-content">
+      <ul>
+        <li><%= image_tag "human.png" %><p>自己紹介の時</p></li>
+        <li><%= image_tag "event.png" %><p>不意にアニメの話になった時</p></li>
+        <li><%= image_tag "love.png" %><p>アニメに興味がある人がいた時</p></li>
+      </ul>
+      <div class="log-in-left-text">おすすめのアニメを即答できますか？</div>
+    </div>
   </div>
 
   <div class="log-in-right">
@@ -14,30 +15,24 @@
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="log-in-right-top-first">
           <div>
-            <%= f.label :email %><br />
+            Eメール<br>
             <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
           </div>
 
           <div>
-            <%= f.label :password %><br />
+            パスワード<br>
             <%= f.password_field :password, autocomplete: "current-password" %>
           </div>
 
           <div class="actions">
-            <%= f.submit "Log in" %>
+            <%= f.submit "ログイン", class:"log-in-btn" %>
           </div>
         </div>
 
         <div class="log-in-right-top-second">
-          <% if devise_mapping.rememberable? %>
-            <div>
-              <%= f.check_box :remember_me %>
-              <%= f.label :remember_me %>
-            </div>
-          <% end %>
 
           <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-            <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+            <%= link_to "パスワードをお忘れですか?", new_password_path(resource_name) %><br />
           <% end %>
         </div>
       <% end %>
