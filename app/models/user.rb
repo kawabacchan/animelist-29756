@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :lists
+  has_many :follows
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :sex

@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   resources :lists, only: [:new, :create] do
     resources :animes, only: [:index, :new, :create] do
       collection {get :search}
-      collection {get :friend_index}
     end
   end
+
+  resources :follows, only: [:new, :create]
 
 end
