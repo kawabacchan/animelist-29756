@@ -1,6 +1,7 @@
 class AnimesController < ApplicationController
   def index
     @lists = List.where(user_id: current_user.id)
+    @user = User.find(current_user.id)
   end
 
   def new
@@ -18,6 +19,17 @@ class AnimesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def search
+    @lists = List.where(user_id: current_user.id)
+    @user = User.find(current_user.id)
+    @friend_user = User.find_by(public_uid: params[:public_uid])
+  end
+
+  def friend_index
+    @friend_user = User.find(params[:user_id])
+    @friend_lists = List.where(user_id: params[:user_id]).where(public_id: 2)
   end
 
   private
