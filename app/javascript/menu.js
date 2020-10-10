@@ -12,4 +12,4 @@ function menu() {
   })
 }
 
-window.addEventListener('load', menu)
+setInterval(menu, 1000)
