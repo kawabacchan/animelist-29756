@@ -26,7 +26,7 @@ class ListsController < ApplicationController
     @follows = Follow.where(user_id: current_user.id)
     @list = List.find(params[:id])
     if @list.update(list_params)
-      redirect_to root_path
+      redirect_to list_animes_path(list_id: @list.id, anchor: "#{@list.id}-position")
     else
       render :edit
     end

@@ -9,11 +9,6 @@
     <%= link_to "リスト作成", new_list_path %>
     <p>フォロー</p>
     <% if @follows.present? %>
-      <div>
-        <% @follows.each do |follow| %>
-          <%= link_to User.find(follow.friend_id).nickname, new_follow_path(user_id: @friend_user.id) %>
-        <% end%>
-      </div>
     <% end %>
     <div>
       <% @follows.each do |follow| %>
@@ -38,7 +33,7 @@
               <% if list.id == @list.id %>
                 <tr>
                   <th colspan="4" class="th-list-name">
-                    <%= f.text_field :name, class:"th-edit-list-name-form" %>
+                    <%= f.text_field :name, class:"th-edit-list-name-form", autofocus: true %>
                     <%= f.collection_select(:public_id, Public.all, :id, :name, {selected: list.public_id}, class:"th-edit-list-public-form") %>
                     <%= f.submit '変更', class:"th-edit-list-submit" %>
                   </th>
