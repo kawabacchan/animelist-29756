@@ -39,17 +39,22 @@
   height: 50px;
 }
 
-.my-list {
-  margin-top: 20px; 
+.my-lists {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
 }
 
 .list-name {
   font-size: 20px;
 }
 
-.anime-lists {
+.anime-list {
   background-color: #FFFAFA;
-  margin: 0 auto;
+}
+
+.add-anime-btn {
+  margin-left: 10px;
 }
 
 .th-anime-name {
@@ -97,4 +102,18 @@
 
 .hidden {
   display: none;
+}
+
+.th-edit-list-name-form {
+  width: calc(100% - 150px);
+  height: 30px;
+}
+
+.th-edit-list-public-form {
+  width: 80px;
+  height: 30px;
+}
+
+.th-edit-list-submit {
+  width: 50px;
 }

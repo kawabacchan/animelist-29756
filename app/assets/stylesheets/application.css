@@ -51,12 +51,18 @@ header {
 
 table {
   border-collapse: collapse;
+  margin-top: 20px;
 }
 
 th, td {
   border: 1px solid black;
+  height: 30px;
 }
 
 th {
   background-color: pink;
+}
+
+a {
+  text-decoration: none;
 }
