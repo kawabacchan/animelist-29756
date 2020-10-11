@@ -2,10 +2,16 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
+    @lists = List.where(user_id: current_user.id)
+    @user = User.find(current_user.id)
+    @follows = Follow.where(user_id: current_user.id)
   end
 
   def create
     @list = List.new(list_params)
+    @lists = List.where(user_id: current_user.id)
+    @user = User.find(current_user.id)
+    @follows = Follow.where(user_id: current_user.id)
     if @list.save
       redirect_to root_path
     else
