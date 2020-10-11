@@ -76,6 +76,7 @@ li img {
   color: #FF5192;
   background-color: white;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .log-in-right-lower {
@@ -110,6 +111,7 @@ li img {
   display: flex;
   align-items: center;
   margin: 0 auto;
+  cursor: pointer;
 }
 
 .registration-btn a {
@@ -117,4 +119,9 @@ li img {
   font-size: 20px;
   font-weight: bold;
   margin: 0 auto;
+}
+
+.registration-btn a:hover {
+  color: white;
+  opacity: 0.8;
 }

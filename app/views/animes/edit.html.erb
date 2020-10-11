@@ -12,8 +12,13 @@
   </div>
   <div class="right-part">
     <div class="anime-form">
-      <p>アニメ入力</p>
-      <%= form_with model: [@list,@anime], url: list_animes_path(@list.id), local: true do |f| %>
+      <div class="anime-form-edit-delete">
+        <div class="anime-form-edit">
+        </div>
+        <div class="anime-form-delete">
+        </div>
+      </div>
+      <%= form_with model: [@list,@anime], url: list_anime_path(@list.id), local: true do |f| %>
         <%= render "shared/error_messages", model: f.object %>
         <%= f.number_field :list_id, value: @list.id, class:"hidden" %>
         <div><p>タイトル</p><%= f.text_field :name, class:"anime-form-name", autofocus: true %></div>

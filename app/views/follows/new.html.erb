@@ -1,58 +1,52 @@
 <header>
   <div class="header-title">アニメリスト</div>
   <div class="header-menu"><%= link_to "マイページに戻る", root_path %></div>
-  
 </header>
+
 <div class="wrapper">
-  <div class="left-part">
-    <p>検索ID: <%= current_user.public_uid %></p>
-    <%= link_to "リスト作成", new_list_path %>
-    <p>フォロー<p>
-    <%= form_with url:search_list_animes_path(list_id: 1), local: true, method: :get do |f| %>
-      <p>友達検索</p>
-      <%= f.text_field :public_uid %>
-      <%= f.submit "検索"%>
-    <% end %>
-    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-  </div>
   <div class="right-part">
     <div class="my-page-title">
-      <%= @friend_user.nickname %>さんのリスト
-      <% if @follows.find_by(friend_id: @friend_user.id).present? %>
-        <span> フォロー中 </span>
-      <% else %>
-        <%= form_with model: @follow, url: follows_path, local: true do |f| %>
-          <%= f.number_field :user_id, value: current_user.id, class:"hidden" %>
-          <%= f.number_field :friend_id, value: @friend_user.id, class:"hidden" %>
-          <%= f.submit "フォローする" %>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="my-lists">
-      <% @friend_lists.each do |list| %>
-        <table class="anime-lists">
-          <tr>
-            <th colspan="4"><%= list.name %></th>
-            <%= link_to '+', new_list_anime_path(list.id) %>
-          </tr>
-          <tr>
-            <th>タイトル名</th>
-            <th>ジャンル</th>
-            <th>評価点</th>
-            <th>メモ</th>
-          </tr>
-          <% Anime.where(list_id: list.id).each do |anime| %>
-            <div class="anime-list">
-              <tr>
-                <td><%= anime.name %></td>
-                <td><%= anime.genre.name %></td>
-                <td><%= anime.score %></td>
-                <td><%= anime.memo %></td>
-              </tr>
-            </div>
+      <div class="my-page-title-user"><%= @friend_user.nickname %>さんのリスト</div>
+      <div class="my-page-title-follow">
+        <% if @follows.find_by(friend_id: @friend_user.id).present? %>
+          <span class="title-follow-display">フォロー中<span>
+        <% else %>
+          <%= form_with model: @follow, url: follows_path, local: true do |f| %>
+            <%= f.number_field :user_id, value: current_user.id, class:"hidden" %>
+            <%= f.number_field :friend_id, value: @friend_user.id, class:"hidden" %>
+            <%= f.submit "フォローする", class: "follow-submit" %>
           <% end %>
-        </table>
+        <% end %>
+      </div>
+    </div>
+    <div class="right-part-without-title">
+      <% @friend_lists.each do |list| %>
+        <div class="my-lists">
+          <table class="anime-lists">
+            <tr>
+              <th colspan="4"><%= list.name %></th>
+            </tr>
+            <tr>
+              <th class="th-anime-name">タイトル名</th>
+              <th class="th-anime-genre">ジャンル</th>
+              <th class="th-anime-score">評価点</th>
+              <th class="th-anime-memo">メモ</th>
+            </tr>
+            <% Anime.where(list_id: list.id).each do |anime| %>
+              <div class="anime-list">
+                <tr>
+                  <td><div class="td-anime-name"><%= link_to anime.name, list_anime_path(list_id: anime.list_id, id: anime.id) %></div></td>
+                  <td><div class="td-anime-genre"><%= anime.genre.name %></div></td>
+                  <td><div class="td-anime-score"><%= anime.score %></div></td>
+                  <td><div class="td-anime-memo"><%= anime.memo %></div></td>
+                </tr>
+              </div>
+            <% end %>
+          </table>
+        </div>
       <% end %>
+      <div class="end-page-space">
+      </div>
     </div>
   </div>
 </div>

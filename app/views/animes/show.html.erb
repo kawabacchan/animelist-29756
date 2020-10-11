@@ -1,0 +1,53 @@
+<header>
+  <div class="header-title">アニメリスト</div>
+  <div class="header-menu"><%= link_to "マイページに戻る", root_path %></div>
+  
+</header>
+<div class="wrapper">
+  <div class="right-part">
+    <div class="anime-form">
+      <% if @list.user_id == current_user.id %>
+        <div class="anime-form-edit-delete">
+          <div class="anime-form-edit">
+            <%= link_to "編集", edit_list_anime_path(list_id: @list.id) %>
+          </div>
+          <div class="anime-form-delete">
+            <%= link_to "削除", list_anime_path(list_id: @list.id, id: @anime.id), method: :delete %>
+          </div>
+        </div>
+      <% end %>
+      <div><p>タイトル</p><div class="anime-name"><%= @anime.name %></div></div>
+      <div><p>ジャンル</p><div class="anime-genre"><%= @anime.genre.name %></div></div>
+      <div>
+        <p>評価点</p>
+        <div class="anime-score">
+          <% if @anime.score.present? %>
+            <%= @anime.score %>
+          <% else %>
+            --
+          <% end %>
+        </div>
+      </div>
+      <div>
+        <p>メモ</p>
+        <div class="anime-memo">
+          <% if @anime.memo.present? %>
+            <%= @anime.memo %>
+          <% else %>
+            --
+          <% end %>
+        </div>
+      </div>
+      <div>
+        <p>画像</p>
+        <div class="anime-image">
+          <% if @anime.image.present? %>
+            <%= image_tag @anime.image.variant(resize: '500x500') %>
+          <% else %>
+            --
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

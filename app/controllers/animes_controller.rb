@@ -3,7 +3,6 @@ class AnimesController < ApplicationController
     @lists = List.where(user_id: current_user.id)
     @user = User.find(current_user.id)
     @follows = Follow.where(user_id: current_user.id)
-    
   end
 
   def new
@@ -18,6 +17,36 @@ class AnimesController < ApplicationController
       redirect_to root_path
     else
       render :new
+    end
+  end
+
+
+  def show
+    @list = List.find(params[:list_id])
+    @anime = Anime.find(params[:id])
+  end
+
+  def edit
+    @list = List.find(params[:list_id])
+    @anime = Anime.find(params[:id])
+  end
+
+  def update
+    @list = List.find(params[:list_id])
+    @anime = Anime.find(params[:id])
+    if @anime.update(params_anime)
+      redirect_to list_anime_path(list_id: params[:list_id])
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    anime = Anime.find(params[:id])
+    if anime.destroy
+      redirect_to root_path
+    else
+      render :show
     end
   end
 
