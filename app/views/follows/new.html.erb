@@ -1,6 +1,6 @@
 <header>
   <div class="header-title">アニメリスト</div>
-  <div class="header-menu">メニュー</div>
+  <div class="header-menu"><%= link_to "マイページに戻る", root_path %></div>
   
 </header>
 <div class="wrapper">
@@ -20,7 +20,7 @@
     <div class="my-page-title">
       <%= @friend_user.nickname %>さんのリスト
       <% if @follows.find_by(friend_id: @friend_user.id).present? %>
-        <p> フォロー中 </p>
+        <span> フォロー中 </span>
       <% else %>
         <%= form_with model: @follow, url: follows_path, local: true do |f| %>
           <%= f.number_field :user_id, value: current_user.id, class:"hidden" %>
