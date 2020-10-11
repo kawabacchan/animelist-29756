@@ -1,7 +1,7 @@
 class List < ApplicationRecord
 
   belongs_to :user
-  has_many :animes
+  has_many :animes, dependent: :destroy
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :public

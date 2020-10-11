@@ -11,6 +11,10 @@
   display: none;
 }
 
+.left-part p {
+  margin-top: 10px;
+}
+
 .left-part-list-index, .left-part-follow-index {
   border: 2px solid #FF5192;
   border-radius: 10px;
@@ -123,4 +127,44 @@
 
 .th-edit-list-submit {
   width: 50px;
+}
+
+.delete-list {
+  display: none;
+}
+
+.left-part-list-index span {
+  margin-left: 10px;
+  border-radius: 5px;
+  padding: 2px 5px;
+  cursor: pointer;
+}
+
+.left-part-list-index span:hover {
+  color: #FF5192;
+}
+
+.search-form {
+  border: 1px solid black;
+  height: 30px;
+  border-radius: 5px;
+}
+
+.search-public-uid-form {
+  width: calc(100% - 50px);
+  height: 28px;
+  border-radius: 5px;
+  border: none;
+}
+
+.search-submit {
+  height: 28px;
+  border-radius: 5px;
+  width :44px;
+  border: none;
+  background-color: lightpink;
+}
+
+.log-out {
+  margin-top : 10px;
 }

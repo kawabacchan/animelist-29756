@@ -8,10 +8,17 @@
     <p>ご自身のID: <%= current_user.public_uid %></p>
     <p>リスト</p>
     <div class="left-part-list-index">
-      <div><%= link_to "+リスト作成", new_list_path %></div>
+      <div><%= link_to "+リスト作成", new_list_path %><span id="delete-list-btn">-リスト削除</span></div>
+      <div class="normal-list" id="normal-list">
+        <% @lists.each do |list| %>
+          <div><%= link_to list.name, list_animes_path(anchor: "#{list.id}-position", list_id: list.id) %></div>
+        <% end%>
+      </div>
+      <div class="delete-list" id="delete-list">
       <% @lists.each do |list| %>
-        <div><%= link_to list.name, list_animes_path(anchor: "#{list.id}-position", list_id: list.id) %></div>
+        <div><%= list.name %><%= link_to '→削除', list_path(list.id), method: :delete %></div>
       <% end%>
+      </div>
     </div>
     <p>フォロー</p>
     <% if @follows.present?%>
@@ -23,11 +30,14 @@
     <% end %>
     <%= form_with url:search_list_animes_path(list_id: 1), local: true, method: :get do |f| %>
       <p>友達検索</p>
-      <%= f.text_field :public_uid, placeholder:"友達のIDを入力" %>
-      <%= f.submit "検索"%>
+      <div class="search-form">
+        <%= f.text_field :public_uid, placeholder:"友達のIDを入力", class:"search-public-uid-form" %>
+        <%= f.submit "検索", class:"search-submit" %>
+      </div>
     <% end %>
-    <p>ランキング</p>
-    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+    <div class="log-out">
+      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+    </div>
   </div>
   <div class="right-part">
     <div class="my-page-title"><%= @user.nickname %>さんのマイページ</div>
