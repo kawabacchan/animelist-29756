@@ -30,13 +30,6 @@ RSpec.describe Anime, type: :model do
         @anime.valid?
         expect(@anime.errors.full_messages).to include("Name can't be blank")
       end
-      it "nameが重複する時、登録できない" do
-        another_anime = FactoryBot.build(:anime)
-        another_anime.save
-        @anime.name = another_anime.name
-        @anime.valid?
-        expect(@anime.errors.full_messages).to include("Name has already been taken")
-      end
       it "genre_idが空だと登録できない" do
         @anime.genre_id = nil
         @anime.valid?

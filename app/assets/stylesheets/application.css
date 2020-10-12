@@ -79,3 +79,13 @@ a:hover {
 .header-menu a:hover {
   opacity: 0.8;
 }
+
+.registrations-new {
+  margin: 20px auto;
+  padding: 20px;
+  border: 3px solid #FF5192;
+  border-radius: 50px;
+  width: 500px;
+  text-align: center;
+  background-color: #FFFAFA;
+}
