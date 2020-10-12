@@ -12,4 +12,4 @@ function menu() {
   })
 }
 
-setInterval(menu, 1000)
+setInterval(menu, 500)
