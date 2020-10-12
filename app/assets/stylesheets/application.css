@@ -14,14 +14,12 @@
  *= require_self
  */
 
+/* 画面全体 */
 * {
   box-sizing: border-box;
 }
 
-p {
-  margin: 0;
-}
-
+/* 画面のヘッダー */
 header {
   background-color: #FF5192;
   color: white;
@@ -49,13 +47,24 @@ header {
   cursor: pointer;
 }
 
+.header-menu a {
+  color: white;
+}
+
+.header-menu a:hover {
+  color: white;
+  opacity: 0.8;
+}
+
+
+/* 表 */
 table {
   border-collapse: collapse;
   margin-top: 20px;
 }
 
 th, td {
-  border: 1px solid black;
+  border: 1px solid gray;
   height: 30px;
 }
 
@@ -63,6 +72,8 @@ th {
   background-color: pink;
 }
 
+
+/* リンク */
 a {
   text-decoration: none;
   color: black;
@@ -72,20 +83,13 @@ a:hover {
   color: #FF5192;
 }
 
-.header-menu a {
-  color: white;
+
+/* リスト */
+li {
+  list-style: none;
 }
 
-.header-menu a:hover {
-  opacity: 0.8;
-}
-
-.registrations-new {
-  margin: 20px auto;
-  padding: 20px;
-  border: 3px solid #FF5192;
-  border-radius: 50px;
-  width: 500px;
-  text-align: center;
-  background-color: #FFFAFA;
+/* p要素 */
+p {
+  margin: 0;
 }

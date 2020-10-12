@@ -1,0 +1,14 @@
+<tr>
+  <th class="th-anime-name">タイトル名</th>
+  <th class="th-anime-genre">ジャンル</th>
+  <th class="th-anime-score">評価点</th>
+  <th class="th-anime-memo">メモ</th>
+</tr>
+<% Anime.where(list_id: list.id).each do |anime| %>
+  <tr>
+    <td><div class="td-anime-name"><%= link_to anime.name, list_anime_path(list_id: anime.list_id, id: anime.id) %></div></td>
+    <td><div class="td-anime-genre"><%= anime.genre.name %></div></td>
+    <td><div class="td-anime-score"><%= anime.score %></div></td>
+    <td><div class="td-anime-memo"><%= anime.memo %></div></td>
+  </tr>
+<% end %>

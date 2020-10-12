@@ -1,17 +1,14 @@
 class ListsController < ApplicationController
+  before_action :set_lists, only: [:new, :create, :edit, :update]
+  before_action :set_user, only: [:new, :create, :edit, :update]
+  before_action :set_follows, only: [:new, :create, :edit, :update]
 
   def new
     @list = List.new
-    @lists = List.where(user_id: current_user.id)
-    @user = User.find(current_user.id)
-    @follows = Follow.where(user_id: current_user.id)
   end
 
   def create
     @list = List.new(list_params)
-    @lists = List.where(user_id: current_user.id)
-    @user = User.find(current_user.id)
-    @follows = Follow.where(user_id: current_user.id)
     if @list.save
       redirect_to root_path
     else
@@ -20,16 +17,10 @@ class ListsController < ApplicationController
   end
 
   def edit
-    @lists = List.where(user_id: current_user.id)
-    @user = User.find(current_user.id)
-    @follows = Follow.where(user_id: current_user.id)
     @list = List.find(params[:id])
   end
 
   def update
-    @lists = List.where(user_id: current_user.id)
-    @user = User.find(current_user.id)
-    @follows = Follow.where(user_id: current_user.id)
     @list = List.find(params[:id])
     if @list.update(list_params)
       redirect_to list_animes_path(list_id: @list.id, anchor: "#{@list.id}-position")
@@ -50,4 +41,15 @@ class ListsController < ApplicationController
     params.require(:list).permit(:name, :public_id).merge(user_id: current_user.id)
   end
 
+  def set_lists
+    @lists = List.where(user_id: current_user.id)
+  end
+
+  def set_user
+    @user = User.find(current_user.id)
+  end
+
+  def set_follows
+    @follows = Follow.where(user_id: current_user.id)
+  end
 end

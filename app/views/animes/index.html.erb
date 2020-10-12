@@ -24,7 +24,7 @@
     <% if @follows.present?%>
       <div class="left-part-follow-index">
         <% @follows.each do |follow| %>
-          <%= link_to User.find(follow.friend_id).nickname, new_follow_path(user_id: follow.friend_id) %>
+          <div><%= link_to User.find(follow.friend_id).nickname, new_follow_path(user_id: follow.friend_id) %></div>
         <% end%>
       </div>
     <% end %>
@@ -48,20 +48,7 @@
             <tr>
               <th colspan="4" class="th-list-name"><%= link_to list.name, edit_list_path(list.id) %></th>
             </tr>
-            <tr>
-              <th class="th-anime-name">タイトル名</th>
-              <th class="th-anime-genre">ジャンル</th>
-              <th class="th-anime-score">評価点</th>
-              <th class="th-anime-memo">メモ</th>
-            </tr>
-            <% Anime.where(list_id: list.id).each do |anime| %>
-              <tr>
-                <td><div class="td-anime-name"><%= link_to anime.name, list_anime_path(list_id: anime.list_id, id: anime.id) %></div></td>
-                <td><div class="td-anime-genre"><%= anime.genre.name %></div></td>
-                <td><div class="td-anime-score"><%= anime.score %></div></td>
-                <td><div class="td-anime-memo"><%= anime.memo %></div></td>
-              </tr>
-            <% end %>
+            <%= render partial:"shared/table_content", locals: {list: list} %>
           </table>
           <%= link_to image_tag("plus.png"), new_list_anime_path(list.id) %>
         </div>

@@ -40,20 +40,7 @@
               <% else %>
                 <th colspan="4" class="th-list-name"><%= link_to list.name, edit_list_path(list.id) %></th>
               <% end %>
-              <tr>
-                <th class="th-anime-name">タイトル名</th>
-                <th class="th-anime-genre">ジャンル</th>
-                <th class="th-anime-score">評価点</th>
-                <th class="th-anime-memo">メモ</th>
-              </tr>
-              <% Anime.where(list_id: list.id).each do |anime| %>
-                <tr>
-                  <td><%= anime.name %></td>
-                  <td><%= anime.genre.name %></td>
-                  <td><%= anime.score %></td>
-                  <td><%= anime.memo %></td>
-                </tr>
-              <% end %>
+              <%= render partial:"shared/table_content", locals: {list: list} %>
             </table>
           <% end %>
           <%= link_to image_tag("plus.png"), new_list_anime_path(list.id) %>

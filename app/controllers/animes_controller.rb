@@ -1,17 +1,18 @@
 class AnimesController < ApplicationController
+  before_action :set_list, only: [:new, :create, :show, :edit, :update]
+  before_action :set_lists, only: [:index, :search]
+  before_action :set_anime, only: [:show, :edit, :update]
+  before_action :set_user, only: [:index, :search]
+  before_action :set_follows, only: [:index, :search]
+
   def index
-    @lists = List.where(user_id: current_user.id)
-    @user = User.find(current_user.id)
-    @follows = Follow.where(user_id: current_user.id)
   end
 
   def new
-    @list = List.find(params[:list_id])
     @anime = Anime.new
   end
 
   def create
-    @list = List.find(params[:list_id])
     @anime = Anime.new(params_anime)
     if @anime.save
       redirect_to root_path
@@ -20,20 +21,13 @@ class AnimesController < ApplicationController
     end
   end
 
-
   def show
-    @list = List.find(params[:list_id])
-    @anime = Anime.find(params[:id])
   end
 
   def edit
-    @list = List.find(params[:list_id])
-    @anime = Anime.find(params[:id])
   end
 
   def update
-    @list = List.find(params[:list_id])
-    @anime = Anime.find(params[:id])
     if @anime.update(params_anime)
       redirect_to list_anime_path(list_id: params[:list_id])
     else
@@ -51,10 +45,7 @@ class AnimesController < ApplicationController
   end
 
   def search
-    @lists = List.where(user_id: current_user.id)
-    @user = User.find(current_user.id)
     @friend_user = User.find_by(public_uid: params[:public_uid])
-    @follows = Follow.where(user_id: current_user.id)
   end
 
   private
@@ -63,4 +54,23 @@ class AnimesController < ApplicationController
     params.require(:anime).permit(:name, :genre_id, :score, :memo, :image).merge(list_id: params[:list_id])
   end
 
+  def set_list
+    @list = List.find(params[:list_id])
+  end
+
+  def set_lists
+    @lists = List.where(user_id: current_user.id)
+  end
+
+  def set_anime
+    @anime = Anime.find(params[:id])
+  end
+
+  def set_user
+    @user = User.find(current_user.id)
+  end
+
+  def set_follows
+    @follows = Follow.where(user_id: current_user.id)
+  end
 end
