@@ -1,3 +1,7 @@
+/* ログイン画面 */
+
+/* ログイン画面の左側 */
+
 .log-in-page {
   display: flex;
 }
@@ -34,7 +38,6 @@
 }
 
 .log-in-left-content li {
-  list-style: none;
   margin-bottom: 30px;
 }
 
@@ -48,6 +51,7 @@ li img {
   display: block;
 }
 
+/* ログイン画面右側 */
 
 .log-in-right {
   width: 50%;
@@ -67,7 +71,7 @@ li img {
 }
 
 .actions {
-  padding: 20px 0 0 10px;;
+  padding: 20px 0 0 10px;
 }
 
 .log-in-btn {
@@ -124,4 +128,15 @@ li img {
 .registration-btn a:hover {
   color: white;
   opacity: 0.8;
+}
+
+/* 新規登録画面 */
+.registrations-new {
+  margin: 20px auto;
+  padding: 20px;
+  border: 3px solid #FF5192;
+  border-radius: 50px;
+  width: 500px;
+  text-align: center;
+  background-color: #FFFAFA;
 }
