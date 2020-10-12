@@ -1,5 +1,4 @@
 class FollowsController < ApplicationController
-
   def new
     @follow = Follow.new
     @follows = Follow.where(user_id: current_user.id)
@@ -23,5 +22,4 @@ class FollowsController < ApplicationController
   def follow_params
     params.require(:follow).permit(:user_id, :friend_id)
   end
-
 end

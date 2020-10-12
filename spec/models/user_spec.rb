@@ -23,31 +23,31 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Email can't be blank")
       end
-      it "重複したemailが存在する場合は登録できない" do
+      it '重複したemailが存在する場合は登録できない' do
         @user.save
         another_user = FactoryBot.build(:user)
         another_user.email = @user.email
         another_user.valid?
-        expect(another_user.errors.full_messages).to include("Email has already been taken")
+        expect(another_user.errors.full_messages).to include('Email has already been taken')
       end
-      it "emailが@を含まない場合は登録できない" do
-        @user.email = "test.com"
+      it 'emailが@を含まない場合は登録できない' do
+        @user.email = 'test.com'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email is invalid")
+        expect(@user.errors.full_messages).to include('Email is invalid')
       end
       it 'passwordが空の時' do
         @user.password = nil
         @user.valid?
         expect(@user.errors.full_messages).to include("Password can't be blank")
       end
-      it "passwordが5文字以下では登録できない" do
-        @user.password = "1234a"
-        @user.password_confirmation = "1234a"
+      it 'passwordが5文字以下では登録できない' do
+        @user.password = '1234a'
+        @user.password_confirmation = '1234a'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
+        expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
       end
       it 'password_confirmationが空の時' do
-        @user.password_confirmation = ""
+        @user.password_confirmation = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
@@ -64,9 +64,8 @@ RSpec.describe User, type: :model do
       it 'sex_idが1の時' do
         @user.sex_id = 1
         @user.valid?
-        expect(@user.errors.full_messages).to include("Sex must be other than 1")
+        expect(@user.errors.full_messages).to include('Sex must be other than 1')
       end
-
     end
   end
 end

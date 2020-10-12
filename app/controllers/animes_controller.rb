@@ -20,7 +20,6 @@ class AnimesController < ApplicationController
     end
   end
 
-
   def show
     @list = List.find(params[:list_id])
     @anime = Anime.find(params[:id])
@@ -62,5 +61,4 @@ class AnimesController < ApplicationController
   def params_anime
     params.require(:anime).permit(:name, :genre_id, :score, :memo, :image).merge(list_id: params[:list_id])
   end
-
 end

@@ -1,5 +1,4 @@
 class ListsController < ApplicationController
-
   def new
     @list = List.new
     @lists = List.where(user_id: current_user.id)
@@ -49,5 +48,4 @@ class ListsController < ApplicationController
   def list_params
     params.require(:list).permit(:name, :public_id).merge(user_id: current_user.id)
   end
-
 end
