@@ -23,31 +23,69 @@ p {
 }
 
 header {
-  background-color: pink;
-  height: 150px;
+  background-color: #FF5192;
+  color: white;
+  height: 100px;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
 }
 
 .header-title {
-  background-color: red;
   text-align: center;
   font-weight: bold;
   font-size: 30px;
 }
 
 .header-menu {
-  width: 100px;
+  width: 150px;
+  border: 1px solid white;
+  padding: 3px 0;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.header-menu:hover {
+  opacity: 0.8;
+  cursor: pointer;
 }
 
 table {
   border-collapse: collapse;
+  margin-top: 20px;
 }
 
 th, td {
   border: 1px solid black;
+  height: 30px;
 }
 
 th {
   background-color: pink;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: #FF5192;
+}
+
+.header-menu a {
+  color: white;
+}
+
+.header-menu a:hover {
+  opacity: 0.8;
+}
+
+.registrations-new {
+  margin: 20px auto;
+  padding: 20px;
+  border: 3px solid #FF5192;
+  border-radius: 50px;
+  width: 500px;
+  text-align: center;
+  background-color: #FFFAFA;
 }

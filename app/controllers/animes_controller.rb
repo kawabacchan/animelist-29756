@@ -6,13 +6,11 @@ class AnimesController < ApplicationController
   end
 
   def new
-    @lists = List.where(user_id: current_user.id)
     @list = List.find(params[:list_id])
     @anime = Anime.new
   end
 
   def create
-    @lists = List.where(user_id: current_user.id)
     @list = List.find(params[:list_id])
     @anime = Anime.new(params_anime)
     if @anime.save
@@ -22,10 +20,41 @@ class AnimesController < ApplicationController
     end
   end
 
+
+  def show
+    @list = List.find(params[:list_id])
+    @anime = Anime.find(params[:id])
+  end
+
+  def edit
+    @list = List.find(params[:list_id])
+    @anime = Anime.find(params[:id])
+  end
+
+  def update
+    @list = List.find(params[:list_id])
+    @anime = Anime.find(params[:id])
+    if @anime.update(params_anime)
+      redirect_to list_anime_path(list_id: params[:list_id])
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    anime = Anime.find(params[:id])
+    if anime.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
+  end
+
   def search
     @lists = List.where(user_id: current_user.id)
     @user = User.find(current_user.id)
     @friend_user = User.find_by(public_uid: params[:public_uid])
+    @follows = Follow.where(user_id: current_user.id)
   end
 
   private
