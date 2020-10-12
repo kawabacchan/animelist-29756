@@ -42,7 +42,7 @@
         <p>画像</p>
         <div class="anime-image">
           <% if @anime.image.present? %>
-            <%= image_tag @anime.image.variant(resize: '500x500') %>
+            <%= image_tag @anime.image.variant(resize: '300x300') %>
           <% else %>
             --
           <% end %>

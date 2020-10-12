@@ -30,6 +30,7 @@
 
 .right-part {
   width: 100%;
+  padding: 10px;
   text-align: center;
 }
 
@@ -124,7 +125,6 @@
 .anime-form {
   background-color: lightpink;
   width: 1000px;
-  height: calc(100vh - 100px);
   border-radius: 20px;
   margin: 0 auto;
   padding: 20px;
@@ -152,7 +152,7 @@
 
 .anime-form-memo {
   width: 100%;
-  height: 200px;
+  height: 100px;
   margin-bottom: 20px;
 }
 
