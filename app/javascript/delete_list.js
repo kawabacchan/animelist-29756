@@ -1,4 +1,4 @@
-function menu() {
+function delete_list() {
   const deleteListBtn = document.getElementById("delete-list-btn")
   const deleteList = document.getElementById("delete-list")
   const normalList = document.getElementById("normal-list")
@@ -16,4 +16,4 @@ function menu() {
   })
 }
 
-setInterval(menu, 500)
+setInterval(delete_list, 250);
