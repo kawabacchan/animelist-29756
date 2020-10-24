@@ -8,7 +8,6 @@
   border-right: 1px solid lightpink;
   height: calc(100vh - 110px);
   overflow: scroll;
-  display: none;
 }
 
 .left-part p {
