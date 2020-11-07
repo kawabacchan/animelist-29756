@@ -64,6 +64,8 @@ Basic認証
 フォローに追加された友達のページには検索せずに訪問することができます。
 ![training](https://gyazo.com/e7e995466c5acf3d0aef72ea41ca355e.gif)
 
+### 年別の放送アニメ表示機能（2014 ~ 2020年） <= 2020.11.7追加実装
+![training](https://gyazo.com/cb6d6e44221b9e379f55ae266033d9c4.gif)
 
 # 使用技術(開発環境)
 
@@ -75,6 +77,10 @@ HTML, CSS, JavaScript
 
 ### データベース
 MySQL
+
+### API
+Project-ShangriLa/sora
+https://github.com/Project-ShangriLa/sora
 
 ### Webサーバー(本番環境)
 Heroku
@@ -95,6 +101,9 @@ RSpec
 VSCode
 
 # 開発予定
+
+### APIを用いた放送アニメ表示機能
+~~APIを用いて、年別で検索すると、検索した年の放送アニメの一覧が表示される機能の実装を考えています。~~ 2020.11.7実装完了
 
 ### AWSを使ったデプロイ
 本アプリケーションはHerokuにデプロイしていますが、AWSを学習後、EC2にデプロイを行う予定です
