@@ -214,6 +214,13 @@
   border: none;
 }
 
+.search-year-form {
+  width: calc(100% - 50px);
+  height: 28px;
+  border-radius: 5px;
+  border: none;
+}
+
 .search-submit {
   height: 28px;
   border-radius: 5px;

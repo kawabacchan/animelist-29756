@@ -1,22 +1,16 @@
 <header>
   <div class="header-title">アニメリスト</div>
+  <div class="header-menu"><%= link_to "マイページに戻る", root_path %></div>
 </header>
 <div class="wrapper">
   <div class="left-part" id="left-part">
     <p>ご自身のID: <%= current_user.public_uid %></p>
     <p>リスト</p>
     <div class="left-part-list-index">
-      <div><%= link_to "+リスト作成", new_list_path %><span id="delete-list-btn">-リスト削除</span></div>
-      <div class="normal-list" id="normal-list">
-        <% @lists.each do |list| %>
-          <div><%= link_to list.name, list_animes_path(anchor: "#{list.id}-position", list_id: list.id) %></div>
-        <% end%>
-      </div>
-      <div class="delete-list" id="delete-list">
+      <div><%= link_to "+リスト作成", new_list_path %></div>
       <% @lists.each do |list| %>
-        <div><%= list.name %><%= link_to '→削除', list_path(list.id), method: :delete %></div>
+        <div><%= link_to list.name, list_animes_path(anchor: "#{list.id}-position", list_id: list.id) %></div>
       <% end%>
-      </div>
     </div>
     <p>フォロー</p>
     <% if @follows.present?%>
@@ -40,24 +34,19 @@
         <%= f.submit "検索", class:"search-submit" %>
       </div>
     <% end %>
-    <div class="log-out">
-      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-    </div>
+    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
   </div>
+  
   <div class="right-part">
-    <div class="my-page-title"><%= @user.nickname %>さんのマイページ</div>
+    <div class="my-page-title"><%= @year %>年の放送アニメ一覧</div>
     <div class="right-part-without-title">
-      <% @lists.each do |list| %>
-        <div class="my-lists">
-          <table class="anime-list" id="<%=list.id%>-position">
-            <tr>
-              <th colspan="4" class="th-list-name"><%= link_to list.name, edit_list_path(list.id) %></th>
-            </tr>
-            <%= render partial:"shared/table_content", locals: {list: list} %>
-          </table>
-          <%= link_to image_tag("plus.png"), new_list_anime_path(list.id) %>
-        </div>
-      <% end %>
+      <div class="my-lists">
+        <table class="anime-list">
+          <% @broadcast_animes.each do |broadcast_anime| %>
+            <tr><td><%= broadcast_anime %></td></tr>
+          <% end %>
+        </table>
+      </div>
       <div class="end-page-space">
       </div>
     </div>
