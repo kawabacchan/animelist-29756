@@ -16,14 +16,16 @@
     <% if @follows.present?%>
       <div class="left-part-follow-index">
         <% @follows.each do |follow| %>
-          <%= link_to User.find(follow.friend_id).nickname, new_follow_path(user_id: follow.friend_id) %>
+          <div><%= link_to User.find(follow.friend_id).nickname, new_follow_path(user_id: follow.friend_id) %></div>
         <% end%>
       </div>
     <% end %>
     <%= form_with url:search_list_animes_path(list_id: 1), local: true, method: :get do |f| %>
       <p>友達検索</p>
-      <%= f.text_field :public_uid, placeholder:"友達のIDを入力" %>
-      <%= f.submit "検索"%>
+      <div class="search-form">
+        <%= f.text_field :public_uid, placeholder:"友達のIDを入力", class:"search-public-uid-form" %>
+        <%= f.submit "検索", class:"search-submit" %>
+      </div>
     <% end %>
     <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
   </div>

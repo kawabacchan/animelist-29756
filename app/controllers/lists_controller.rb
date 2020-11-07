@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
-  before_action :set_lists, only: [:new, :create, :edit, :update]
-  before_action :set_user, only: [:new, :create, :edit, :update]
-  before_action :set_follows, only: [:new, :create, :edit, :update]
+  before_action :set_lists, only: [:new, :create, :edit, :update, :search]
+  before_action :set_user, only: [:new, :create, :edit, :update, :search]
+  before_action :set_follows, only: [:new, :create, :edit, :update, :search]
 
   def new
     @list = List.new
@@ -33,6 +33,17 @@ class ListsController < ApplicationController
     list = List.find(params[:id])
     list.destroy
     redirect_to root_path
+  end
+
+  def search
+    @year = params[:year]
+    uri = URI.parse("http://api.moemoe.tokyo/anime/v1/master/#{@year}")
+    response = Net::HTTP.get_response(uri)
+    results = JSON.parse(response.body)
+    @broadcast_animes = []
+    results.each do |result|
+      @broadcast_animes << result["title"]
+    end
   end
 
   private
